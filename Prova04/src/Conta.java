@@ -1,29 +1,34 @@
+package Prova04.src;
+
 public class Conta {
     private int numeroAgencia;
     private int numeroConta;
     private double saldo;
     private Cliente cliente;
 
-    public Conta(int numeroAgencia, int numeroConta, double saldo, Cliente cliente) {
+    public Conta(int numeroAgencia, int numeroConta, Cliente cliente) {
         this.numeroAgencia = numeroAgencia;
         this.numeroConta = numeroConta;
-        this.saldo = saldo;
+        this.saldo = 0.0;
         this.cliente = cliente;
     }
     public void deposito(double quantia) {
         this.saldo += quantia;
     }
     public void saque(double quantia) {
-        this.saldo -= quantia;
+        if(this.saldo >= quantia) {
+            this.saldo -= quantia;
+        } else {
+            System.out.println("Saldo insuficiente.");
+        }
     }
     public void transferencia(Conta destino, double quantia) {
-        if(this.saldo < quantia) {
-            System.out.println("Saldo insuficiente");
-            return;
-        } else {
+        if(this.saldo >= quantia) {
             this.saque(quantia);
             destino.deposito(quantia);
-            System.out.println("Transferência realizada com sucesso");
+            System.out.println("Transferência realizada com sucesso.");
+        } else {
+            System.out.println("Saldo insuficiente.");
         }
     }
     void exibirSaldo() {
