@@ -46,6 +46,106 @@ public class TesteOperacoes {
         }
         sc.close();
     }
+    public void realizarOperacoes(int agenciaOrigem, int contaOrigem, int agenciaDestino, int contaDestino, double quantia) {
+        Conta contaOrigemObj = null;
+        Conta contaDestinoObj = null;
+        
+        for (Conta conta : contas) {
+            if (conta.getNumeroAgencia() == agenciaOrigem && conta.getNumeroConta() == contaOrigem) {
+                contaOrigemObj = conta;
+            }
+            if (conta.getNumeroAgencia() == agenciaDestino && conta.getNumeroConta() == contaDestino) {
+                contaDestinoObj = conta;
+            }
+        }
+        
+        if (contaOrigemObj != null && contaDestinoObj != null) {
+            contaOrigemObj.transferencia(contaDestinoObj, quantia);
+        } else {
+            System.out.println("Conta origem ou destino não encontrada.");
+        }
+    }
+
+    public void exibirSaldo(int numeroAgencia, int numeroConta) {
+        Scanner sc = new Scanner(System.in);
+
+        for (Conta conta : contas) {
+            if (conta.getNumeroAgencia() == numeroAgencia && conta.getNumeroConta() == numeroConta) {
+                System.out.println("Informe a quantidade de meses para simular operações:");
+                int meses = sc.nextInt();
+                if (conta instanceof ContaCorrente) {
+                    ((ContaCorrente) conta).simularOperacao(meses);
+                } else if (conta instanceof ContaPoupanca) {
+                    ((ContaPoupanca) conta).simularOperacao(meses);
+                }
+                break;
+            }
+         sc.close();
+        }
+    }
+
+    public void apresentarMenu() {
+        Scanner sc = new Scanner(System.in);
+        boolean continuar = true;
+        
+        while (continuar) {
+            System.out.println("Escolha uma opção:");
+            System.out.println("1 - Criar conta");
+            System.out.println("2 - Realizar operações");
+            System.out.println("3 - Exibir saldo");
+            System.out.println("0 - Sair");
+            
+            int opcao = sc.nextInt();
+            sc.nextLine(); 
+            
+            switch (opcao) {
+                case 1:
+                    System.out.println("Informe o nome:");
+                    String nome = sc.nextLine();
+                    System.out.println("Informe o endereço:");
+                    String endereco = sc.nextLine();
+                    System.out.println("Informe a profissão:");
+                    String profissao = sc.nextLine();
+                    criarConta(nome, endereco, profissao);
+                    break;
+                case 2:
+                    System.out.println("Informe a agência de origem:");
+                    int agenciaOrigem = sc.nextInt();
+                    System.out.println("Informe a conta de origem:");
+                    int contaOrigem = sc.nextInt();
+                    System.out.println("Informe a agência de destino:");
+                    int agenciaDestino = sc.nextInt();
+                    System.out.println("Informe a conta de destino:");
+                    int contaDestino = sc.nextInt();
+                    System.out.println("Informe a quantia a ser transferida:");
+                    double quantia = sc.nextDouble();
+                    realizarOperacoes(agenciaOrigem, contaOrigem, agenciaDestino, contaDestino, quantia);
+                    break;
+                case 3:
+                    System.out.println("Informe a agência:");
+                    int numeroAgencia = sc.nextInt();
+                    System.out.println("Informe a conta:");
+                    int numeroConta = sc.nextInt();
+                    exibirSaldo(numeroAgencia, numeroConta);
+                    break;
+                case 0:
+                    continuar = false;
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+            
+            if (continuar) {
+                System.out.println("Deseja realizar outra operação? (s/n)");
+                String resposta = sc.nextLine();
+                if (resposta.equalsIgnoreCase("n")) {
+                    continuar = false;
+                }
+            }
+        }
+        
+        sc.close();
+    }
 
     public ArrayList<Cliente> getClientes() {
         return clientes;
