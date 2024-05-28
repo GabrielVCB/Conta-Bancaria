@@ -12,9 +12,11 @@ public class Conta {
         this.saldo = 0.0;
         this.cliente = cliente;
     }
+
     public void deposito(double quantia) {
         this.saldo += quantia;
     }
+
     public void saque(double quantia) {
         if(this.saldo >= quantia) {
             this.saldo -= quantia;
@@ -22,6 +24,7 @@ public class Conta {
             System.out.println("Saldo insuficiente.");
         }
     }
+
     public void transferencia(Conta destino, double quantia) {
         if(this.saldo >= quantia) {
             this.saque(quantia);
@@ -31,9 +34,11 @@ public class Conta {
             System.out.println("Saldo insuficiente.");
         }
     }
+
     void exibirSaldo() {
-        System.err.printf("Usuário: %s\nSaldo: %.2f", this.cliente.getNome(), this.saldo);
+        System.err.printf("Usuário: %s\nSaldo: %.2f\n", this.cliente.getNome(), this.saldo);
     }
+
     public int getNumeroAgencia() {
         return numeroAgencia;
     }
@@ -58,5 +63,4 @@ public class Conta {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
 }
