@@ -55,47 +55,42 @@ public class TesteOperacoes {
     }
 
     public void realizarOperacoes(int agenciaOrigem, int contaOrigem, int agenciaDestino, int contaDestino, double quantia) {
-        Conta contaOrigemObj = null;
-        Conta contaDestinoObj = null;
-
+        Conta origem = null;
+        Conta destino = null;
         for (Conta conta : contas) {
             if (conta.getNumeroAgencia() == agenciaOrigem && conta.getNumeroConta() == contaOrigem) {
-                contaOrigemObj = conta;
+                origem = conta;
             }
             if (conta.getNumeroAgencia() == agenciaDestino && conta.getNumeroConta() == contaDestino) {
-                contaDestinoObj = conta;
+                destino = conta;
             }
         }
-
-        if (contaOrigemObj != null && contaDestinoObj != null) {
-            contaOrigemObj.transferencia(contaDestinoObj, quantia);
-            System.out.println("Transferência realizada com sucesso.");
+    
+        if (origem != null && destino != null) {
+            origem.transferencia(destino, quantia);
         } else {
-            System.out.println("Conta origem ou destino não encontrada.");
+            System.out.println("Conta de origem ou destino não encontrada.");
         }
     }
-
     public void exibirSaldo(int numeroAgencia, int numeroConta) {
-        Conta contaEncontrada = null;
-
-        for (Conta conta : contas) {
-            if (conta.getNumeroAgencia() == numeroAgencia && conta.getNumeroConta() == numeroConta) {
-                contaEncontrada = conta;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Informe a quantidade de meses para simulação:");
+        int meses = sc.nextInt();
+    
+        Conta conta = null;
+        for (Conta c : contas) {
+            if (c.getNumeroAgencia() == numeroAgencia && c.getNumeroConta() == numeroConta) {
+                conta = c;
                 break;
             }
         }
-        if (contaEncontrada != null) {
-            System.out.println("Informe a quantidade de meses para simular operações:");
-            int meses = sc.nextInt();
-            sc.nextLine();  
-
-            if (contaEncontrada instanceof ContaCorrente) {
-                ((ContaCorrente) contaEncontrada).simularOperacao(meses);
-            } 
-            else if (contaEncontrada instanceof ContaPoupanca) {
-                ((ContaPoupanca) contaEncontrada).simularOperacao(meses);
+    
+        if (conta != null) {
+            if (conta instanceof ContaPoupanca) {
+                ((ContaPoupanca) conta).simularOperacao(meses);
+            } else if (conta instanceof ContaCorrente) {
+                ((ContaCorrente) conta).simularOperacao(meses);
             }
-            contaEncontrada.exibirSaldo();
         } else {
             System.out.println("Conta não encontrada.");
         }
@@ -157,12 +152,3 @@ public class TesteOperacoes {
         }
         sc.close();
     }
-
-    public ArrayList<Cliente> getClientes() {
-        return clientes;
-    }
-
-    public ArrayList<Conta> getContas() {
-        return contas;
-    }
-}
