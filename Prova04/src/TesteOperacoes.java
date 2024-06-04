@@ -7,10 +7,9 @@ import java.util.InputMismatchException;
 public class TesteOperacoes {
     private ArrayList<Cliente> clientes = new ArrayList<>();
     private ArrayList<Conta> contas = new ArrayList<>();
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
 
     public void criarConta() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("Informe o nome:");
         String nome = sc.nextLine();
         System.out.println("Informe o endereço:");
@@ -35,24 +34,26 @@ public class TesteOperacoes {
             saldo = sc.nextDouble();
         } catch (InputMismatchException e) {
             System.out.println("Erro: Entrada inválida.");
+            sc.nextLine(); 
             return;
         }
     
-        sc.nextLine();
+        sc.nextLine(); 
     
         if (tipoConta.equalsIgnoreCase("poupanca")) {
             ContaPoupanca contaPoupanca = new ContaPoupanca(numAgencia, numConta, cliente);
             contaPoupanca.deposito(saldo);
             contas.add(contaPoupanca);
-            System.out.println("Conta poupança criada: Agência " + numAgencia + " Conta " + numConta);
+            System.out.printf("Conta poupança criada:\n\tAgência: %d\n\tConta: %d\n",numAgencia, numConta);
         } else if (tipoConta.equalsIgnoreCase("corrente")) {
             ContaCorrente contaCorrente = new ContaCorrente(numAgencia, numConta, cliente);
             contaCorrente.deposito(saldo);
             contas.add(contaCorrente);
-            System.out.println("Conta corrente criada: Agência " + numAgencia + " Conta " + numConta);
+            System.out.printf("Conta poupança criada:\n\tAgência: %d\n\tConta: %d\n",numAgencia, numConta);
         }
         System.out.println("Conta criada com sucesso.");
     }
+
     public void realizarOperacoes(int agenciaOrigem, int contaOrigem, int agenciaDestino, int contaDestino, double quantia) {
         Conta origem = null;
         Conta destino = null;
@@ -64,18 +65,14 @@ public class TesteOperacoes {
                 destino = conta;
             }
         }
-    
         if (origem != null && destino != null) {
             origem.transferencia(destino, quantia);
         } else {
             System.out.println("Conta de origem ou destino não encontrada.");
         }
     }
+
     public void exibirSaldo(int numeroAgencia, int numeroConta) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Informe a quantidade de meses para simulação:");
-        int meses = sc.nextInt();
-    
         Conta conta = null;
         for (Conta c : contas) {
             if (c.getNumeroAgencia() == numeroAgencia && c.getNumeroConta() == numeroConta) {
@@ -83,13 +80,8 @@ public class TesteOperacoes {
                 break;
             }
         }
-    
         if (conta != null) {
-            if (conta instanceof ContaPoupanca) {
-                ((ContaPoupanca) conta).simularOperacao(meses);
-            } else if (conta instanceof ContaCorrente) {
-                ((ContaCorrente) conta).simularOperacao(meses);
-            }
+            conta.exibirSaldo();
         } else {
             System.out.println("Conta não encontrada.");
         }
@@ -149,7 +141,7 @@ public class TesteOperacoes {
                 }
             }
         }
-        sc.close();
+        sc.close(); 
     }
 
     public ArrayList<Cliente> getClientes() {
@@ -158,10 +150,5 @@ public class TesteOperacoes {
 
     public ArrayList<Conta> getContas() {
         return contas;
-    }
-
-    public static void main(String[] args) {
-        TesteOperacoes teste = new TesteOperacoes();
-        teste.apresentarMenu();
     }
 }

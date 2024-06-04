@@ -1,5 +1,7 @@
 package Prova04.src;
 
+import java.util.Scanner;
+
 public class Conta {
     private int numeroAgencia;
     private int numeroConta;
@@ -35,9 +37,10 @@ public class Conta {
         }
     }
 
-    void exibirSaldo() {
-        System.err.printf("Usuário: %s\nSaldo: %.2f\n", this.cliente.getNome(), this.saldo);
+    public void exibirSaldo() {
+        System.out.printf("Usuário: %s\nSaldo: %.2f\n", this.cliente.getNome(), this.saldo);
     }
+    
 
     public int getNumeroAgencia() {
         return numeroAgencia;
