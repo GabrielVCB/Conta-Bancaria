@@ -10,22 +10,22 @@ public class TesteOperacoes {
     Scanner sc = new Scanner(System.in); 
 
     public void criarConta() {
+        Scanner sc = new Scanner(System.in);
         System.out.println("Informe o nome:");
         String nome = sc.nextLine();
         System.out.println("Informe o endereço:");
         String endereco = sc.nextLine();
         System.out.println("Informe a profissão:");
         String profissao = sc.nextLine();
-
+    
         Cliente cliente = new Cliente(nome, endereco, profissao);
-        clientes.add(cliente);
-
-        System.out.println("Informe o tipo de conta: (poupança ou corrente)");
+    
+        System.out.println("Informe o tipo de conta: (poupanca ou corrente)");
         String tipoConta = sc.nextLine();
-        int numAgencia = 0;
-        int numConta = 0;
-        double saldo = 0.0;
-
+        int numAgencia;
+        int numConta;
+        double saldo;
+    
         try {
             System.out.println("Informe o número da agência:");
             numAgencia = sc.nextInt();
@@ -33,23 +33,23 @@ public class TesteOperacoes {
             numConta = sc.nextInt();
             System.out.println("Informe o saldo inicial:");
             saldo = sc.nextDouble();
-            sc.nextLine();  
-
         } catch (InputMismatchException e) {
             System.out.println("Erro: Entrada inválida.");
-            sc.nextLine();  
+            return;
         }
-        if (tipoConta.equalsIgnoreCase("poupança")) {
+    
+        sc.nextLine();
+    
+        if (tipoConta.equalsIgnoreCase("poupanca")) {
             ContaPoupanca contaPoupanca = new ContaPoupanca(numAgencia, numConta, cliente);
-            contaPoupanca.setCliente(cliente);
             contaPoupanca.deposito(saldo);
             contas.add(contaPoupanca);
-
+            System.out.println("Conta poupança criada: Agência " + numAgencia + " Conta " + numConta);
         } else if (tipoConta.equalsIgnoreCase("corrente")) {
             ContaCorrente contaCorrente = new ContaCorrente(numAgencia, numConta, cliente);
-            contaCorrente.setCliente(cliente);
             contaCorrente.deposito(saldo);
             contas.add(contaCorrente);
+            System.out.println("Conta corrente criada: Agência " + numAgencia + " Conta " + numConta);
         }
         System.out.println("Conta criada com sucesso.");
     }
