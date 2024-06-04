@@ -1,7 +1,5 @@
 package Prova04.src;
 
-import java.util.Scanner;
-
 public class Conta {
     private int numeroAgencia;
     private int numeroConta;
