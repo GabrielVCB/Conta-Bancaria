@@ -15,6 +15,7 @@ public class Conta {
 
     public void deposito(double quantia) {
         this.saldo += quantia;
+        System.out.println("Depósito realizado com sucesso.");
     }
 
     public void saque(double quantia) {
