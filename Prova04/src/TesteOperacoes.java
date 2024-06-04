@@ -5,9 +5,9 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 
 public class TesteOperacoes {
-    private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-    private ArrayList<Conta> contas = new ArrayList<Conta>();
-    Scanner sc = new Scanner(System.in); 
+    private ArrayList<Cliente> clientes = new ArrayList<>();
+    private ArrayList<Conta> contas = new ArrayList<>();
+    Scanner sc = new Scanner(System.in);
 
     public void criarConta() {
         Scanner sc = new Scanner(System.in);
@@ -53,7 +53,6 @@ public class TesteOperacoes {
         }
         System.out.println("Conta criada com sucesso.");
     }
-
     public void realizarOperacoes(int agenciaOrigem, int contaOrigem, int agenciaDestino, int contaDestino, double quantia) {
         Conta origem = null;
         Conta destino = null;
@@ -95,7 +94,7 @@ public class TesteOperacoes {
             System.out.println("Conta não encontrada.");
         }
     }
-
+            
     public void apresentarMenu() {
         boolean continuar = true;
 
@@ -152,3 +151,17 @@ public class TesteOperacoes {
         }
         sc.close();
     }
+
+    public ArrayList<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public ArrayList<Conta> getContas() {
+        return contas;
+    }
+
+    public static void main(String[] args) {
+        TesteOperacoes teste = new TesteOperacoes();
+        teste.apresentarMenu();
+    }
+}
