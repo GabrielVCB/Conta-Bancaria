@@ -81,7 +81,11 @@ public class TesteOperacoes {
             }
         }
         if (conta != null) {
-            conta.exibirSaldo();
+            if (conta instanceof ContaPoupanca) {
+                ((ContaPoupanca) conta).simularOperacao(meses);
+            } else if (conta instanceof ContaCorrente) {
+                ((ContaCorrente) conta).simularOperacao(meses);
+            }
         } else {
             System.out.println("Conta não encontrada.");
         }
