@@ -21,13 +21,13 @@ O projeto está organizado da seguinte forma:
 ### Princípio da Responsabilidade Única (SRP): A classe `Cliente` é responsável por manter e exibir os dados do cliente:
 -Atua como uma classe cadastro de informações cliente.
 - Os **atributos** são os tópicos de armazenamento das informações do usuário.
-nome: Armazena o nome do cliente.
-endereco: Armazena o endereço do cliente
-profissao:Armazena a profissão do cliente.
+-  nome: Armazena o nome do cliente.
+- endereco: Armazena o endereço do cliente
+- profissao:Armazena a profissão do cliente.
 - O **construtor** é responsavel por inicializar  os **atributos** 
 - Os **métodos**: São as formas de utilidade dadas aos **atributos**.
-void exibirAtributos():É um metodo utilizado para exibir os **atributos**.
-Getters e Setters:É um método de acesso e modificador dos **atributos**(que podem ser usados em outras **Classe**).
+- void exibirAtributos():É um metodo utilizado para exibir os **atributos**.
+- Getters e Setters:É um método de acesso e modificador dos **atributos**(que podem ser usados em outras **Classe**).
 
 ## Conta:
 -Atua como uma classe cadastro de informações da conta.
@@ -39,20 +39,20 @@ saldo: Armazena o saldo atual da conta;
 cliente: Instância da classe Cliente que representa o dono da conta.
 - O **construtor** é responsavel por inicializar  os **atributos**(O saldo é definido inicialmente como 0.0)
 - Os **métodos**:
-void deposito(double quantia): É um método que adiciona um valor especifico ao saldo.
-void saque(double quantia): Deduz uma quantia especifica do saldo(caso o saldo seja maior que o saque, caso não, ele exibirá a mensagem "Saldo insuficiente").
-void transferencia(Conta destino, double quantia):Transfere a quantia especificada da conta atual para a conta de destino(caso o saldo seja maior que o saque, caso não, ele exibirá a mensagem "Saldo insuficiente")
-void exibirSaldo(): Exibe o saldo atual da conta.
-Getters e Setters: Métodos para acessar e modificar os atributos.
+- void deposito(double quantia): É um método que adiciona um valor especifico ao saldo.
+- void saque(double quantia): Deduz uma quantia especifica do saldo(caso o saldo seja maior que o saque, caso não, ele exibirá a mensagem "Saldo insuficiente").
+- void transferencia(Conta destino, double quantia):Transfere a quantia especificada da conta atual para a conta de destino(caso o saldo seja maior que o saque, caso não, ele exibirá a mensagem "Saldo insuficiente")
+- void exibirSaldo(): Exibe o saldo atual da conta.
+- Getters e Setters: Métodos para acessar e modificar os atributos.
 
 ## ContaCorrente:
 ### Princípio da Responsabilidade Única (SRP):A classe `ContaCorrente` é responsável pela manipulação das operações bancárias (depósito, saque, transferência)
 -É  uma classe que herda(**extends**) e acrescenta funções espécificas para a classe `ContaCorrente`.
 -Os **atributos** são tanto os da classe `Conta` quanto o especifico dela própria.
-super(int numeroAgencia, int numeroConta, Cliente cliente);
-taxaManutencao: Taxa fixa de manutenção mensal (50.0);
+- super(int numeroAgencia, int numeroConta, Cliente cliente);
+- taxaManutencao: Taxa fixa de manutenção mensal (50.0);
 - O **construtor** é responsável chamar o construtor da superclasse Conta para inicializar
 - Os **métodos**:
-void simularOperacao(int meses): Calcula o saldo após deduzir a taxa de manutenção por um número especificado de meses e exibe o saldo final.
+- void simularOperacao(int meses): Calcula o saldo após deduzir a taxa de manutenção por um número especificado de meses e exibe o saldo final.
   
 
