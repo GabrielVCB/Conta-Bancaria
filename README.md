@@ -53,7 +53,7 @@ Os **atributos** são os tópicos de armazenamento das informações da conta:
    - super(int numeroAgencia, int numeroConta, Cliente cliente);
    - taxaManutencao: Taxa fixa de manutenção mensal (50.0);
 2. O **construtor** é responsável chamar o construtor da superclasse Conta para inicializar
-   - Os **métodos**:
+3. Os **métodos**:
    - void simularOperacao(int meses): Calcula o saldo após deduzir a taxa de manutenção por um número especificado de meses e exibe o saldo final.
   
 
