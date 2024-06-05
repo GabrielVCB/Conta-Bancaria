@@ -15,7 +15,8 @@ O projeto está organizado da seguinte forma:
 - `Main`: Classe principal que inicia a aplicação e apresenta o menu de operações.
 
 # Classes
-`Banco`: Atua como a base do codigo que agrupa instâncias de outras classes, ou seja, ela é usada para organizar as outras classes.
+##Banco:
+- Atua como a base do codigo que agrupa instâncias de outras classes, ou seja, ela é usada para organizar as outras classes.
 
 ## Cliente: 
 ### Princípio da Responsabilidade Única (SRP): A classe `Cliente` é responsável por manter e exibir os dados do cliente:
