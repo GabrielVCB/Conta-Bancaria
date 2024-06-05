@@ -20,15 +20,15 @@ O projeto está organizado da seguinte forma:
 
 ## Cliente: 
 ### Princípio da Responsabilidade Única (SRP): A classe `Cliente` é responsável por manter e exibir os dados do cliente:
--Atua como uma classe cadastro de informações cliente.
-- Os **atributos** são os tópicos de armazenamento das informações do usuário.
- - nome: Armazena o nome do cliente.
- - endereco: Armazena o endereço do cliente
- - profissao:Armazena a profissão do cliente.
-- O **construtor** é responsavel por inicializar  os **atributos** 
-- Os **métodos**: São as formas de utilidade dadas aos **atributos**.
- - void exibirAtributos():É um metodo utilizado para exibir os **atributos**.
- - Getters e Setters:É um método de acesso e modificador dos **atributos**(que podem ser usados em outras **Classe**).
+- Atua como uma classe cadastro de informações cliente.
+1. Os **atributos** são os tópicos de armazenamento das informações do usuário.
+   - nome: Armazena o nome do cliente.
+   - endereco: Armazena o endereço do cliente
+   - profissao:Armazena a profissão do cliente.
+2. O **construtor** é responsavel por inicializar  os **atributos** 
+3. Os **métodos**: São as formas de utilidade dadas aos **atributos**.
+   - void exibirAtributos():É um metodo utilizado para exibir os **atributos**.
+   - Getters e Setters:É um método de acesso e modificador dos **atributos**(que podem ser usados em outras **Classe**).
 
 ## Conta:
 -Atua como uma classe cadastro de informações da conta.
