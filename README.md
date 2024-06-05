@@ -20,7 +20,7 @@ O projeto está organizado da seguinte forma:
 ## Cliente: 
 ### Princípio da Responsabilidade Única (SRP): A classe `Cliente` é responsável por manter e exibir os dados do cliente:
 -Atua como uma classe cadastro de informações cliente.
-- Os **atributos**são os tópicos de armazenamento das informações do usuário.
+- Os **atributos** são os tópicos de armazenamento das informações do usuário.
 nome: Armazena o nome do cliente.
 endereco: Armazena o endereço do cliente
 profissao:Armazena a profissão do cliente.
