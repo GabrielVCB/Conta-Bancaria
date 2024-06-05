@@ -73,6 +73,8 @@ public class TesteOperacoes {
     }
 
     public void exibirSaldo(int numeroAgencia, int numeroConta) {
+        System.out.println("Informe a quantidade de meses para simulação:");
+        int meses = sc.nextInt();
         Conta conta = null;
         for (Conta c : contas) {
             if (c.getNumeroAgencia() == numeroAgencia && c.getNumeroConta() == numeroConta) {
