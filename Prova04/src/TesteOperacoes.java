@@ -54,7 +54,7 @@ public class TesteOperacoes {
         System.out.println("Conta criada com sucesso.");
     }
 
-    public void realizarOperacoes(int agenciaOrigem, int contaOrigem, int agenciaDestino, int contaDestino, double quantia) {
+     public void realizarOperacoes(int agenciaOrigem, int contaOrigem, int agenciaDestino, int contaDestino, double quantia) {
         Conta origem = null;
         Conta destino = null;
         for (Conta conta : contas) {
@@ -67,14 +67,14 @@ public class TesteOperacoes {
         }
         if (origem != null && destino != null) {
             origem.transferencia(destino, quantia);
+            System.out.printf("Novo saldo da conta de origem (Agência: %d, Conta: %d): %.2f\n", origem.getNumeroAgencia(), origem.getNumeroConta(), origem.getSaldo());
+            System.out.printf("Novo saldo da conta de destino (Agência: %d, Conta: %d): %.2f\n", destino.getNumeroAgencia(), destino.getNumeroConta(), destino.getSaldo());
         } else {
             System.out.println("Conta de origem ou destino não encontrada.");
         }
     }
 
     public void exibirSaldo(int numeroAgencia, int numeroConta) {
-        System.out.println("Informe a quantidade de meses para simulação:");
-        int meses = sc.nextInt();
         Conta conta = null;
         for (Conta c : contas) {
             if (c.getNumeroAgencia() == numeroAgencia && c.getNumeroConta() == numeroConta) {
@@ -83,10 +83,18 @@ public class TesteOperacoes {
             }
         }
         if (conta != null) {
-            if (conta instanceof ContaPoupanca) {
-                ((ContaPoupanca) conta).simularOperacao(meses);
-            } else if (conta instanceof ContaCorrente) {
-                ((ContaCorrente) conta).simularOperacao(meses);
+            System.out.printf("Saldo atual da conta (Agência: %d, Conta: %d): %.2f\n", conta.getNumeroAgencia(), conta.getNumeroConta(), conta.getSaldo());
+            
+            System.out.println("Deseja simular o saldo após alguns meses? (s/n)");
+            String resposta = sc.next();
+            if (resposta.equalsIgnoreCase("s")) {
+                System.out.println("Informe a quantidade de meses para simulação:");
+                int meses = sc.nextInt();
+                if (conta instanceof ContaPoupanca) {
+                    ((ContaPoupanca) conta).simularOperacao(meses);
+                } else if (conta instanceof ContaCorrente) {
+                    ((ContaCorrente) conta).simularOperacao(meses);
+                }
             }
         } else {
             System.out.println("Conta não encontrada.");
