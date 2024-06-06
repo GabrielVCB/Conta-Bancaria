@@ -17,58 +17,53 @@ public class TesteOperacoes {
             String endereco = sc.nextLine();
             System.out.println("Informe a profissão:");
             String profissao = sc.nextLine();
-
+    
             Cliente cliente = new Cliente(nome, endereco, profissao);
-
+    
             System.out.println("Informe o tipo de conta: (poupanca ou corrente)");
             String tipoConta = sc.nextLine();
-
-            while (true) {
-                System.out.println("Informe o tipo de conta: (poupanca ou corrente)");
-                tipoConta = sc.nextLine();
-                if (tipoConta.equalsIgnoreCase("poupanca") || tipoConta.equalsIgnoreCase("corrente")) {
-                    break;
-                } else {
-                    System.out.println("Erro: Tipo de conta inválido. Tente novamente.");
+    
+            if (tipoConta.equalsIgnoreCase("poupanca") || tipoConta.equalsIgnoreCase("corrente")) {
+                int numAgencia;
+                int numConta;
+                double saldo;
+    
+                try {
+                    System.out.println("Informe o número da agência:");
+                    numAgencia = sc.nextInt();
+                    System.out.println("Informe o número da conta:");
+                    numConta = sc.nextInt();
+                    System.out.println("Informe o saldo inicial:");
+                    saldo = sc.nextDouble();
+                } catch (InputMismatchException e) {
+                    System.out.println("Erro: Entrada inválida.");
+                    sc.nextLine();
+                    return;
                 }
-            }
-
-            int numAgencia;
-            int numConta;
-            double saldo;
-
-            try {
-                System.out.println("Informe o número da agência:");
-                numAgencia = sc.nextInt();
-                System.out.println("Informe o número da conta:");
-                numConta = sc.nextInt();
-                System.out.println("Informe o saldo inicial:");
-                saldo = sc.nextDouble();
-            } catch (InputMismatchException e) {
-                System.out.println("Erro: Entrada inválida.");
+    
                 sc.nextLine();
-                return;
+    
+                if (tipoConta.equalsIgnoreCase("poupanca")) {
+                    ContaPoupanca contaPoupanca = new ContaPoupanca(numAgencia, numConta, cliente);
+                    contaPoupanca.deposito(saldo);
+                    contas.add(contaPoupanca);
+                    System.out.printf("Conta poupança criada:\n\tAgência: %d\n\tConta: %d\n", numAgencia, numConta);
+                } else if (tipoConta.equalsIgnoreCase("corrente")) {
+                    ContaCorrente contaCorrente = new ContaCorrente(numAgencia, numConta, cliente);
+                    contaCorrente.deposito(saldo);
+                    contas.add(contaCorrente);
+                    System.out.printf("Conta corrente criada:\n\tAgência: %d\n\tConta: %d\n", numAgencia, numConta);
+                }
+                System.out.println("Conta criada com sucesso.");
+            } else {
+                System.out.println("Erro: Tipo de conta inválido.");
             }
-
-            sc.nextLine();
-
-            if (tipoConta.equalsIgnoreCase("poupanca")) {
-                ContaPoupanca contaPoupanca = new ContaPoupanca(numAgencia, numConta, cliente);
-                contaPoupanca.deposito(saldo);
-                contas.add(contaPoupanca);
-                System.out.printf("Conta poupança criada:\n\tAgência: %d\n\tConta: %d\n", numAgencia, numConta);
-            } else if (tipoConta.equalsIgnoreCase("corrente")) {
-                ContaCorrente contaCorrente = new ContaCorrente(numAgencia, numConta, cliente);
-                contaCorrente.deposito(saldo);
-                contas.add(contaCorrente);
-                System.out.printf("Conta corrente criada:\n\tAgência: %d\n\tConta: %d\n", numAgencia, numConta);
-            }
-            System.out.println("Conta criada com sucesso.");
         } catch (InputMismatchException e) {
             System.out.println("Erro: Entrada inválida.");
             sc.nextLine();
         }
     }
+    
 
     public void realizarOperacoes(int agenciaOrigem, int contaOrigem, int agenciaDestino, int contaDestino, double quantia) {
         Conta origem = null;
