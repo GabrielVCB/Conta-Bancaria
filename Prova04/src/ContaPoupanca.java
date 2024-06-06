@@ -8,7 +8,7 @@ public class ContaPoupanca extends Conta{
     }
 
     public void simularOperacao(int meses) {
-        double rendimento = this.getSaldo() * Math.pow(1 + taxaRendimento, meses);        System.out.printf("Rendimento após %d meses: %.2f", meses, rendimento);
-        System.out.printf("Rendimento após %d meses: %.2f\n", meses, rendimento);
+        double rendimento = this.getSaldo() * Math.pow(1 + taxaRendimento, meses);        
+        System.out.printf("Rendimento após %d meses: R$ %.2f\n", meses, rendimento);
     }
 }

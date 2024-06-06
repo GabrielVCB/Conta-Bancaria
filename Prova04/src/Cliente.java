@@ -11,7 +11,8 @@ public class Cliente {
         this.profissao = profissao;
     }
 
-    void exibirAtributos() {
+    public void exibirAtributos() {
+        System.out.println("Atributos do cliente:");
         System.out.println("Nome: " + nome);
         System.out.println("Endereco: " + endereco);
         System.out.println("Profissao: " + profissao);

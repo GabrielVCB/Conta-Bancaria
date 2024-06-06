@@ -37,7 +37,7 @@ public class Conta {
     }
 
     public void exibirSaldo() {
-        System.out.printf("Usuário: %s\nSaldo: %.2f\n", this.cliente.getNome(), this.saldo);
+        System.out.printf("Usuário: %s\nSaldo: R$ %.2f\n", this.cliente.getNome(), this.saldo);
     }
     
 

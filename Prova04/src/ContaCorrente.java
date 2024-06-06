@@ -10,6 +10,6 @@ public class ContaCorrente extends Conta {
     public void simularOperacao(int meses) {
         double custo = taxaManutencao * meses;
         double saldoFinal = this.getSaldo() - custo;
-        System.out.printf("Saldo apos manuntecoes em %d meses: %.2f", meses, saldoFinal);
+        System.out.printf("Saldo apos manuntecoes em %d meses: R$ %.2f", meses, saldoFinal);
     } 
 }
