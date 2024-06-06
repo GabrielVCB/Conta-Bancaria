@@ -89,13 +89,13 @@ O projeto está organizado da seguinte forma:
 - O usuário pode escolher entre as seguintes opções:
 
    - Criar conta
-   - Realizar operações (transferências)
+   - Realizar transferência
    - Exibir saldo
    - Exibir atributos do cliente
    - Sair
 
 - Criar Conta: O usuário fornece os dados do cliente e da conta (poupança ou corrente) e a conta é criada e armazenada na lista de contas.
-- Realizar Operações: O usuário fornece os dados das contas de origem e destino e a quantia a ser transferida. A transferência é realizada se houver saldo suficiente.
+- Realizar Transferência: O usuário fornece os dados das contas de origem e destino e a quantia a ser transferida. A transferência é realizada se houver saldo suficiente.
 - Exibir Saldo: O usuário fornece os dados da conta e o saldo é exibido. O usuário pode optar por simular o saldo após um número especificado de meses.
 - Exibir Atributos do Cliente: O usuário fornece os dados da conta e os atributos do cliente associado são exibidos.
 

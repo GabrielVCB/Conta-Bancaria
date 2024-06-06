@@ -130,7 +130,7 @@ public class TesteOperacoes {
             try {
                 System.out.println("Escolha uma opção:");
                 System.out.println("1 - Criar conta");
-                System.out.println("2 - Realizar operações");
+                System.out.println("2 - Realizar transferência");
                 System.out.println("3 - Exibir saldo");
                 System.out.println("4 - Exibir atributos do cliente");
                 System.out.println("0 - Sair");
