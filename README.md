@@ -47,8 +47,9 @@ O projeto está organizado da seguinte forma:
    - Getters e Setters: Métodos para acessar e modificar os atributos.
 
 ## ContaCorrente:
-### Princípio da Responsabilidade Única (SRP):A classe `ContaCorrente` é responsável pela simulação do custo das operações da conta corrente após n meses.
--É  uma classe que herda(**extends**) e acrescenta funções espécificas para a classe `ContaCorrente`.
+### Princípio da Responsabilidade Única (SRP): A classe `ContaCorrente` é responsável pela simulação do custo das operações da conta corrente após n meses.
+### Princípio da Substituição de Liskov (LSP): A classe `ContaCorrente` pode ser usadas no lugar de sua classe pai `Conta` sem afetar o comportamento do programa.
+-É  uma classe que herda(**extends**) da classe `Conta` e acrescenta funções espécificas para a classe `ContaCorrente`.
 1. **Atributos**: 
    - super(int numeroAgencia, int numeroConta, Cliente cliente).
    - taxaManutencao: Taxa fixa de manutenção mensal (50.0).
@@ -57,8 +58,9 @@ O projeto está organizado da seguinte forma:
    - void simularOperacao(int meses): Calcula o saldo após deduzir a taxa de manutenção por um número especificado de meses e exibe o saldo final.
   
 ## ContaPoupanca:
-### Princípio da Responsabilidade Única (SRP): A classe ContaPoupanca é responsável pela simulação de rendimento do saldo após n meses.
-- É uma classe que herda (**extends**) da classe Conta e acrescenta funcionalidades específicas para a classe `ContaPoupanca`.
+### Princípio da Responsabilidade Única (SRP): A classe `ContaPoupanca` é responsável pela simulação de rendimento do saldo após n meses.
+### Princípio da Substituição de Liskov (LSP): A classe `ContaPoupanca` pode ser usadas no lugar de sua classe pai `Conta` sem afetar o comportamento do programa.
+- É uma classe que herda (**extends**) da classe `Conta` e acrescenta funcionalidades específicas para a classe `ContaPoupanca`.
 1. **Atributos**: 
    - super(int numeroAgencia, int numeroConta, Cliente cliente).
    - taxaRendimento: Taxa de rendimento mensal (5% ou 0.05).
